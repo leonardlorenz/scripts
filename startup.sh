@@ -35,16 +35,19 @@ compton --config ~/.config/compton/compton.conf &
 
 ~/Scripts/checkforscreens.sh &
 
-###################
-##### POLYBAR #####
-###################
+######################
+##### STATUS BAR #####
+######################
 
-~/Scripts/polybarlaunch.sh &
+# ~/Scripts/polybarlaunch.sh &
+
+killall lemonbar
+width=$(xrandr | grep "current" | awk '{print $8a / 2}')
+~/Scripts/lemonbar/lemonbar.sh | lemonbar -p -f Hack\ Nerd\ Font\ Mono:pixelsize=15 -g "x18+0+0" | bash
 
 ############################
 ##### background image #####
 ############################
 
 # wait for the screen layout to finish
-sleep 1
 feh --bg-fill ~/.config/ranger/wall.png
